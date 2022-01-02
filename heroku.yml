@@ -1,11 +1,15 @@
 setup:
-  addons: 
+  addons:
     - plan: cleardb
   config:
     RACK_ENV: production
     RAILS_ENV: production
     RAILS_LOG_TO_STDOUT: enabled
     RAILS_SERVE_STATIC_FILES: enabled
+    DB_DATABASE: heroku_d059e7ee119cdb9
+    DB_HOST: us-cdbr-east-05.cleardb.net
+    DB_USERNAME: b40d666abf58f7
+    DB_PASSWORD: b0ebab4f
 build:
   docker:
     web: Dockerfile
