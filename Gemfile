@@ -7,6 +7,7 @@ gem "bootstrap-sass"
 gem "rails", "~> 6.1.3", ">= 6.1.3.1"
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
+# gem 'mysql2', '~> 0.3.12b2'
 # Use Puma as the app server
 gem "puma", "~> 5.0"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -31,7 +32,8 @@ gem "pry-rails"
 gem "faker"
 gem "active_storage_validations", "0.8.2"
 gem "image_processing", "1.9.3"
-gem "mini_magick", "4.9.5"
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger consol
@@ -54,7 +56,7 @@ group :development do
 end
 
 group :production do # 本番環境
-  #gem 'pg' # PostgreSQL
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
