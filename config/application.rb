@@ -52,5 +52,6 @@ module Cooklog
     config.time_zone = "Tokyo"
     # config.x.cors_allowed_origins=ENV.fetch('CORS_ALLOWED_ORIGINS','http://localhost3001')
     config.autoloader = :classic
+    config.hosts << ENV["API_DOMAIN"]
   end
 end
