@@ -8,7 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # origins Rails.application.config.x.cors_allowed_origins
-    origins ENV["API_DOMAIN"] || ""
+    origins ENV["API_DOMAIN"] || "https://cooklog-frontend.herokuapp.com"
 
     resource "*",
       headers: :any,
@@ -16,4 +16,3 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
       credentials: true
   end
 end
-
