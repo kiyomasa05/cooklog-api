@@ -112,4 +112,5 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.initialize_on_precompile = false
   config.hosts << ENV["API_DOMAIN"]
+  config.hosts << "cooklog-api.herokuapp.com"
 end
