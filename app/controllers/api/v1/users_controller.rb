@@ -23,7 +23,8 @@ module Api
           render json: {
             status: 500,
             # エラーメッセージを全て取得し、返す
-            errors: ["登録できませんでした。"],
+            # errors: ["登録できませんでした。"],
+            errors: [@user.errors.full_messages],
           }
         end
       end

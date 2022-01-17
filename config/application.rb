@@ -53,5 +53,6 @@ module Cooklog
     # config.x.cors_allowed_origins=ENV.fetch('CORS_ALLOWED_ORIGINS','http://localhost3001')
     config.autoloader = :classic
     config.hosts << ENV["API_DOMAIN"]
+    config.hosts << "cooklog-api.herokuapp.com"
   end
 end
