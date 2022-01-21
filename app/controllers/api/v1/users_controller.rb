@@ -71,6 +71,10 @@ module Api
       private
 
       def registrations_params
+        # params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar)
+        # params.require(:user).permit(:name, :email, :password, :password_confirmation, avatar: {})
+        #引数エラーになる ArgumentError (missing keywords: :io, :filename):
+        # params.require(:user).permit(:name, :email, :password, :password_confirmation, avatar: {})
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
       end
 

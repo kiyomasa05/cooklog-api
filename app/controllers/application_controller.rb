@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   skip_before_action :verify_authenticity_token, raise: false
   # Railsが認証トークンを使用しないように
   helper_method :login, :current_user
+  protect_from_forgery with: :exception
 
   def login(user)
     session[:user_id] = user.id
