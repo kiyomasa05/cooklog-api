@@ -6,7 +6,7 @@ module Api
       # お気に入り登録
       def create
         if @recipe.user_id != current_user.id # 投稿者本人以外に限定
-          #favoriteを作成する
+          #favoriteを作成
           @favorite = Favorite.create(user_id: current_user.id, recipe_id: @recipe.id)
           render json: {
             status: :created,
@@ -15,9 +15,8 @@ module Api
         else
           render json: {
                   status: 500,
-                  errors: ["登録できませんでした"]
-                  #  errors: @favorite.errors.full_messages
-                  #  バリデーと入れてないから？エラーメッセージがないのでは？
+                  # errors: ["登録できませんでした"],
+                  errors: @favorite.errors.full_messages
                 }
         end
       end
