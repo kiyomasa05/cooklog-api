@@ -49,6 +49,8 @@ module Cooklog
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
+    #doc:追記 https://qiita.com/Y_uuu/items/1651b181f06499c5cede#cookie%E3%81%AEsamesite%E5%B1%9E%E6%80%A7%E3%82%92none-secure%E5%B1%9E%E6%80%A7%E3%82%92true%E3%81%AB%E3%81%99%E3%82%8B
+    config.action_dispatch.cookies_same_site_protection = :none
     config.time_zone = "Tokyo"
     # config.x.cors_allowed_origins=ENV.fetch('CORS_ALLOWED_ORIGINS','http://localhost3001')
     config.autoloader = :classic
