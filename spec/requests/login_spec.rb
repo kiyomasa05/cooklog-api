@@ -5,8 +5,7 @@ RSpec.describe "Login", type: :request do
     before do
       @user = create(:user)
     end
-
-      login_url='http://localhost:3000/api/v1/login'
+      login_url='/api/v1/login'
 
       context 'ユーザーデータが見つからない場合' do
         it 'エラーメッセージを返す' do
@@ -22,7 +21,7 @@ RSpec.describe "Login", type: :request do
           log_in(@user)
         end
             it 'OKステータスを返す' do
-              expect(response).to have_http_status(:ok)
+              expect(response.status).to eq(200)
             end
             it 'ログイン情報をフロントへ返す' do
               expect(json["user"]["name"]).to eq @user.name

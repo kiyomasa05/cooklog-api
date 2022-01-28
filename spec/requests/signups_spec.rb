@@ -2,13 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "Signups", type: :request do
   describe "post/signups" do
-    signup_url='http://localhost:3000/api/v1/signup'
+    signup_url='/api/v1/signup'
     context '正常可動' do
-      
         it '新しいUserを作成する' do
           expect do
             post signup_url,params:{user:{name:"sample",email:"sample@sample.com",password:"foobar",password_confirmation:"foobar"}}
-            expect(response).to have_http_status(:ok)
+            expect(response).to have_http_status(200)
             #ポストデータを受け取り、Userのカウントを1増やす
           end.to change {User.count}.by(+1)
         end

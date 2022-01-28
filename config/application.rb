@@ -27,10 +27,10 @@ module Cooklog
     config.generators do |g|
       #g.assets false          # CSS, JavaScriptファイルは生成しない
       g.test_framework :rspec,
-                       controller_specs: false,
-                       view_specs: false,
-                       helper_specs: false,
-                       routing_specs: false
+                      controller_specs: false,
+                      view_specs: false,
+                      helper_specs: false,
+                      routing_specs: false
     end
     # Configuration for the application, engines, and railties goes here.
     #
@@ -56,5 +56,7 @@ module Cooklog
     config.autoloader = :classic
     config.hosts << ENV["API_DOMAIN"]
     config.hosts << "cooklog-api.herokuapp.com"
+    #DOC: https://qiita.com/masaxyz_labo/items/ac27d652e301e212e8ce
+    config.hosts << '.example.com'
   end
 end

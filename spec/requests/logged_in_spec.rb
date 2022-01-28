@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "logged_in", type: :request do
   describe "get/logged_in" do
-    logged_in_url='http://localhost:3000/api/v1/logged_in'
-  
+    logged_in_url='api/v1/logged_in'
+    login_url='/api/v1/login'
+
     before do
       @user = create(:user)
+      post login_url,params:{user:{email: @user.email, password: @user.password}}
       log_in(@user)
       # ログインする
       # logged_inに接続する
@@ -23,9 +25,9 @@ RSpec.describe "logged_in", type: :request do
             expect(@current_user).to eq(@user)
         end
       end
-        it 'ログインしてない場合' do
+        # it 'ログインしてない場合' do
         
-        end
+        # end
     end
   end
 end
