@@ -13,6 +13,8 @@ development:
 test:
   <<: *default
   database: cooklog_test
+  username: root
+  password: password
 
 production:
   <<: *default
