@@ -13,8 +13,9 @@ development:
 test:
   <<: *default
   database: cooklog_test
-  username: root
-  password: password
+  # username: root
+  # password: password
+  host: <% ENV.fetch("APP_DATABASE_HOST")>
 
 production:
   <<: *default
