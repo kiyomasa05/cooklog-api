@@ -37,10 +37,10 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
-      # - run:
-      #     name: test
-      #     command: bundle exec rake test
-      - ruby/rspec-test
+      - run:
+          name: test
+          command: bundle exec rspec
+      # - ruby/rspec-test
 
   # deploy:
   #   docker:
