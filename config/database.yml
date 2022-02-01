@@ -13,7 +13,7 @@ development:
 test:
   <<: *default
   database: cooklog_test
-  host: <% ENV.fetch("APP_DATABASE_HOST"){'db'} %>
+  host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
 
 production:
   <<: *default
