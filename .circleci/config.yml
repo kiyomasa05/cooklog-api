@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@1.4.0
-  # heroku: circleci/heroku@1.2.3
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build:
@@ -42,28 +42,28 @@ jobs:
       - run:
           name: test
           command: bundle exec rspec
-      # - ruby/rspec-test
 
-  # deploy:
-  #   docker:
-  #     - image: circleci/ruby:2.7
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker:
-  #         version: 19.03.13
-  #     - heroku/install
-  #     - run:
-  #         name: heroku login
-  #         command: heroku container:login
-  #     - run:
-  #         name: push docker image
-  #         command: heroku container:push web -a $HEROKU_APP_NAME
-  #     - run:
-  #         name: release docker image
-  #         command: heroku container:release web -a $HEROKU_APP_NAME
-  #     - run:
-  #         name: database setup
-  #         command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+  deploy:
+    docker:
+      - image: cimg/ruby:3.0.0
+    steps:
+      - checkout
+      #dockerコマンドが使えるように
+      - setup_remote_docker:
+          version: 20.10.11
+      - heroku/install
+      - run:
+          name: heroku login
+          command: heroku container:login
+      - run:
+          name: push docker image
+          command: heroku container:push web -a $HEROKU_APP_NAME
+      - run:
+          name: release docker image
+          command: heroku container:release web -a $HEROKU_APP_NAME
+      - run:
+          name: database setup
+          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
   version: 2
@@ -73,12 +73,14 @@ workflows:
       - test:
           requires:
             - build
-      # - deploy:
-      #     requires:
-      #       - test
-      #     filters:
-      #       branches:
-      #         only: main
+      - deploy:
+          requires:
+            - test
+          context:
+            -
+          filters:
+            branches:
+              only: master
 #Docker-compose使用ver未決定
 # version: 2.1
 
