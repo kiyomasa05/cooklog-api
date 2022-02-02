@@ -20,8 +20,8 @@ jobs:
     docker:
       - image: cimg/ruby:3.0.0
       - image: cimg/mysql:8.0
-      command: |
-          mysqld --default-authentication-plugin=mysql_native_password
+        command: |
+            mysqld --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: cooklog_test
