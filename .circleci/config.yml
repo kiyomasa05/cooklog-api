@@ -1,6 +1,6 @@
 version: 2.1
 
-orbs: 
+orbs:
   ruby: circleci/ruby@1.4.0
   # heroku: circleci/heroku@1.2.3
 
@@ -8,7 +8,7 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.0.0
-  #githubのコードからコピー
+    #githubのコードからコピー
     working_directory: ~/cooklog-api
     steps:
       - checkout:
@@ -29,14 +29,14 @@ jobs:
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
-    working_directory:  ~/cooklog-api
+    working_directory: ~/cooklog-api
     steps:
       - checkout:
-          path:  ~/cooklog-api
+          path: ~/cooklog-api
       - ruby/install-deps
       - run:
           name: Database setup
-          command: bundle exec rails db:migrate
+          command: bundle exec rake db:create db:migrate
       - run:
           name: test
           command: bundle exec rspec
@@ -77,7 +77,6 @@ workflows:
       #     filters:
       #       branches:
       #         only: main
-
 #Docker-compose使用ver未決定
 # version: 2.1
 
@@ -94,7 +93,7 @@ workflows:
 #       - run:
 #           name: docker-compose build
 #           # command: |
-#           # sudo chown root:$(whoami) /run/docker-temp.sock 
+#           # sudo chown root:$(whoami) /run/docker-temp.sock
 #           # docker-compose build
 #           command:  docker-compose build
 #         # environment:
