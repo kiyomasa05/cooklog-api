@@ -56,6 +56,7 @@ module Cooklog
     config.autoloader = :classic
     config.hosts << ENV["API_DOMAIN"]
     config.hosts << "cooklog-api.herokuapp.com"
+    config.hosts << "localhost:3001"
     #DOC: https://qiita.com/masaxyz_labo/items/ac27d652e301e212e8ce
     config.hosts << '.example.com'
   end
