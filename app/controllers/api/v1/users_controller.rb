@@ -22,8 +22,6 @@ module Api
         else
           render json: {
             status: 500,
-            # エラーメッセージを全て取得し、返す
-            # errors: ["登録できませんでした。"],
             errors: [@user.errors.full_messages],
           }
         end
@@ -54,10 +52,7 @@ module Api
           }
           # binding.pry
         end
-        #         既存のuserにavatarを添付するにはavatar.attachを呼び出します。
-        # user.avatar.attach(params[:avatar])
-        # avatar.attached?で特定のuserがavatarを持っているかどうかを調べられます。
-        # user.avatar.attached?
+        #既存のuserにavatarを添付するにはavatar.attachを呼び出し
       end
 
       # お気に入りを見せる
@@ -71,11 +66,7 @@ module Api
       private
 
       def registrations_params
-        # params.require(:user).permit(:name, :email, :password, :password_confirmation,:avatar)
-        # params.require(:user).permit(:name, :email, :password, :password_confirmation, avatar: {})
-        #引数エラーになる ArgumentError (missing keywords: :io, :filename):
-        # params.require(:user).permit(:name, :email, :password, :password_confirmation, avatar: {})
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, avatar: [])
       end
 
       def decode(str)

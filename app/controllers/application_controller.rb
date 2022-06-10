@@ -15,12 +15,8 @@ class ApplicationController < ActionController::API
   # インスタンス変数の「@current_user」がFalse（nil）の場合、Userモデルから現在ログインしているユーザーidと一致する情報を代入する
   def current_user
     if session[:user_id]
-      # @current_user ||= User.find_by(id: session[:user_id])
-      @current_user ||= User.find(session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id])
+      # @current_user ||= User.find(session[:user_id])
     end
   end
 end
-# Userの探し方を変えた
-# 変わらなかった
-# login に！をつけた sessionに入っていない可能性があるので。
-# かわらなかった
