@@ -28,12 +28,11 @@ jobs:
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: cooklog_test
           MYSQL_ROOT_USER: root
-          MYSQL_USER: root
     # testジョブ全体の環境変数
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      APP_DATABASE_HOST: "127.0.0.1"
+      APP_DATABASE_HOST: "127.0.0.1:3002"
       RAILS_ENV: test
     working_directory: ~/cooklog-api
     # stepsで実行するJobを定義
