@@ -4,6 +4,7 @@ orbs:
   ruby: circleci/ruby@1.4.0
   heroku: circleci/heroku@1.2.6
 
+# jobの定義
 jobs:
   build:
     docker:
@@ -13,25 +14,29 @@ jobs:
     steps:
       - checkout:
           path: ~/cooklog-api
-      #bundle install
+      #orbs:bundle installなどを実行するコマンド
       - ruby/install-deps
 
   test:
     docker:
       - image: cimg/ruby:3.0.0
-      - image: cimg/mysql:8.0
+      - image: cimg/mysql:5.5
         command: |
             mysqld --default-authentication-plugin=mysql_native_password
         environment:
+        # databese.ymlに合わして設定する
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: cooklog_test
           MYSQL_ROOT_USER: root
+          MYSQL_USER: root
+    # testジョブ全体の環境変数
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
     working_directory: ~/cooklog-api
+    # stepsで実行するJobを定義
     steps:
       - checkout:
           path: ~/cooklog-api
@@ -68,7 +73,7 @@ jobs:
           name: database setup
           command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
-
+# 実行順
 workflows:
   version: 2
   build_test_and_deploy:
