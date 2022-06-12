@@ -55,7 +55,8 @@ jobs:
       #dockerコマンドが使えるように
       - setup_remote_docker:
           version: 20.10.11
-      - heroku/install
+      # - heroku/install
+      - heroku/deploy-via-git
       # - run:
       #     name: heroku login
       #     command: heroku login
@@ -74,9 +75,9 @@ jobs:
       # - run:
       #     name: git push heroku master
       #     command: git push heroku master
-      - run:
-          name: database setup
-          command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
+      # - run:
+      #     name: database setup
+      #     command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 # 実行順
 workflows:
