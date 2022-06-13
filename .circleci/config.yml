@@ -50,7 +50,9 @@ jobs:
   deploy:
     docker:
       - image: cimg/ruby:3.0.0
-    executor: heroku/default
+      - auth:
+        username: kiyoma
+        password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       #dockerコマンドが使えるように
