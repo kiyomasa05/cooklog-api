@@ -50,6 +50,7 @@ jobs:
   deploy:
     docker:
       - image: cimg/ruby:3.0.0
+    executor: heroku/default
     steps:
       - checkout
       #dockerコマンドが使えるように
@@ -58,7 +59,7 @@ jobs:
       - heroku/install
       # - heroku/push-docker-image
       # - heroku/release-docker-image
-      - heroku/deploy-via-git
+      # - heroku/deploy-via-git
       # - heroku/deploy-via-git
       # - run:
       #     name: heroku login
@@ -72,9 +73,9 @@ jobs:
       # - run:
       #     name: release docker image
       #     command: heroku container:release web -a $HEROKU_APP_NAME
-      # - run:
-      #     name: git push heroku master
-      #     command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+      - run:
+          name: git push heroku master
+          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
       # - run:
       #     name: git push heroku master
       #     command: git push heroku master
