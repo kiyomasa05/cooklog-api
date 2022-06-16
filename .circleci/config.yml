@@ -63,9 +63,9 @@ jobs:
       # - heroku/release-docker-image
       # - heroku/deploy-via-git
       # - heroku/deploy-via-git
-      # - run:
-      #     name: heroku login
-      #     command: heroku login
+      - run:
+          name: heroku login
+          command: heroku login
       # - run:
       #     name: heroku login
       #     command: heroku container:login
