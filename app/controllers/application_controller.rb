@@ -6,9 +6,7 @@ class ApplicationController < ActionController::API
 
   # セッションに引数のuserのidを格納する
   def login(user)
-  # def login!
     session[:user_id] = user.id
-    # binding.pry
   end
 
   # 一時cookiesは自動的に暗号化
@@ -16,7 +14,6 @@ class ApplicationController < ActionController::API
   def current_user
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
-      # @current_user ||= User.find(session[:user_id])
     end
   end
 end

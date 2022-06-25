@@ -15,10 +15,10 @@ module Api
           @user.save
           login @user
           render json: {
-                   status: :created,
-                   logged_in: true,
-                   user: @user,
-                 }, methods: [:avatar_url]
+                  status: :created,
+                  logged_in: true,
+                  user: @user,
+                }, methods: [:avatar_url]
         else
           render json: {
             status: 500,
@@ -29,9 +29,6 @@ module Api
 
       def update
         @user = User.find(params[:id])
-        # @user = User.find(registrations_params[:email])
-        # update_without_password(registrations_params)
-        # binding.pry
         if @user.valid?
           if params[:user][:avatar]
             blob = ActiveStorage::Blob.create_and_upload!(

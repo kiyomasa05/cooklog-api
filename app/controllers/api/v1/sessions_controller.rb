@@ -25,7 +25,6 @@ module Api
       end
 
       def logged_in?
-        #おろらく@current_userがnilになっているため、帰ってこない
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
         if @current_user
           render json: {
@@ -37,7 +36,6 @@ module Api
           render json: { 
             status:401,
             logged_in: false,
-            # errors: @current_user.errors.full_messages 
             session: session[:user_id],
             user: @current_user,
             errors: ["ログインしてください"] 
