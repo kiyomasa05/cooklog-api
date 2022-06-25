@@ -92,8 +92,9 @@ workflows:
       - deploy:
           requires:
             - test
-          # context:
-          #   - cooklog-api
+          context:
+            - cooklog-api
+            - my_portfolio_context
           filters:
             branches:
               only: master
