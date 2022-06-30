@@ -43,7 +43,6 @@ module Api
             )
             @recipe.image.attach(blob)
           end
-          # binding.pry
           @recipe.update(post_params)
           render json: {
             status: :updated,
@@ -61,7 +60,7 @@ module Api
 
       def post_params
         params.require(:recipe).permit(
-          :user_id, :title, :time_required, :food, :process,
+          :user_id, :title, :time_required, :food, :process, image: []
         )
       end
 
